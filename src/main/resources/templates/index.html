@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Hi</p>
+<span th:text="${currentCurrency.getBase()}"></span>
+<form action="#" th:action="@{/currencies/resultGif}" th:object="${currentCurrency}" method="post">
+<select class="currency-list" id="dropDownList" th:field="*{currencySymbol}">
+    <option selected="selected" value="RUB">RUB</option>
+    <option th:each="key: ${currentCurrency.getRates().keySet()}" th:value="${key}"
+            th:text="${key}">RATES</option>
+</select>
+    <input type="submit" id="submitButton" th:value="COMPARE">
+</form>
+<div>Updated:
+<span th:text="${updateTime}"></span>
+</div>
+</body>
+</html>
